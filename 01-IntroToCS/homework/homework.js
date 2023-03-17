@@ -22,7 +22,7 @@ function DecimalABinario(num) {
    return bin;
 }
 
-console.log(DecimalABinario(0))
+console.log(DecimalABinario(23))
 
 module.exports = {
    BinarioADecimal,
