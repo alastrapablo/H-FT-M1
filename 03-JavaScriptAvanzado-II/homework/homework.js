@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Closures
 
@@ -15,11 +15,11 @@ otroContador()      // 1
 otroContador()      // 2 */
 
 function counter() {
-  let contador = 0
+  let contador = 0;
   return function () {
-    contador++
-    return contador
-  }
+    contador++;
+    return contador;
+  };
 }
 
 /* Ejercicio 2
@@ -44,17 +44,17 @@ otra vez cálculos que ya se hicieron anteriormente.
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) */
 
 function cacheFunction(cb) {
-  let cache = {}
+  let cache = {};
 
   return function (arg) {
     if (cache.hasOwnProperty(arg)) {
-      return cache[arg]
+      return cache[arg];
     }
 
     const result = cb(arg);
-    cache[arg] = result;   /* [cb.name + ' ' + arg] */
+    cache[arg] = result; /* [cb.name + ' ' + arg] */
     return result;
-  }
+  };
 }
 
 //----------------------------------------
@@ -62,13 +62,13 @@ function cacheFunction(cb) {
 // Bind
 
 var instructor = {
-  nombre: 'Franco',
+  nombre: "Franco",
   edad: 25,
 };
 
 var alumno = {
-  nombre: 'Juan',
-  curso: 'FullStack',
+  nombre: "Juan",
+  curso: "FullStack",
 };
 
 function getNombre() {
@@ -102,6 +102,12 @@ let textoAsteriscos = crearCadena.bind(this, "*", "*");
 let textoGuiones = crearCadena.bind(this, "-", "-");
 let textoUnderscore = crearCadena.bind(this, "_", "_");
 
+let cadena1 = textoAsteriscos("Hola Mundo");
+let cadena2 = textoGuiones("Hola Mundo");
+let cadena3 = textoUnderscore("Hola Mundo");
+console.log(cadena1);
+console.log(cadena2);
+console.log(cadena3);
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
