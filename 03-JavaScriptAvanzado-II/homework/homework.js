@@ -57,6 +57,42 @@ function cacheFunction(cb) {
   };
 }
 
+/*Practice
+
+      function cacheFunction(cb) {
+        let cache = {}
+  
+        return function (arg) {
+          if (cache.hasOwnProperty(arg)) {
+            console.log(cache);
+            return cache[arg]
+          }
+  
+          const result = cb(arg);
+          cache[cb.name + ' ' + arg] = result;
+          console.log(cache);
+          return result;
+        }
+      }
+  
+      function sumita(n) {
+        return n + 10
+      }
+  
+      let sumaCache = cacheFunction(sumita)
+      console.log(sumaCache(2));
+      console.log(sumaCache(2));
+      console.log(sumaCache(6));
+  
+      function square(n) {
+        return n * n;
+      }
+  
+      const squareCache = cacheFunction(square);
+      console.log(squareCache(2));
+      console.log(squareCache(6));
+*/
+
 //----------------------------------------
 
 // Bind
@@ -98,9 +134,9 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos = crearCadena.bind(this, "*", "*");
-let textoGuiones = crearCadena.bind(this, "-", "-");
-let textoUnderscore = crearCadena.bind(this, "_", "_");
+let textoAsteriscos = crearCadena.bind(null, "*", "*");
+let textoGuiones = crearCadena.bind(null, "-", "-");
+let textoUnderscore = crearCadena.bind(null, "_", "_");
 
 let cadena1 = textoAsteriscos("Hola Mundo");
 let cadena2 = textoGuiones("Hola Mundo");
@@ -109,7 +145,22 @@ console.log(cadena1);
 console.log(cadena2);
 console.log(cadena3);
 
-
+/*Practice
+function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena, nombre) {
+  return delimitadorIzquierda + cadena + nombre + delimitadorDerecha;
+}
+ 
+let textoAsteriscos = crearCadena.bind(null, "*", "*", 'hola ');
+let textoGuiones = crearCadena.bind(null, "-", "-");
+let textoUnderscore = crearCadena.bind(null, "_", "_");
+ 
+let cadena1 = textoAsteriscos('juan')
+let cadena2 = textoGuiones("hola ", 'juan')
+let cadena3 = textoUnderscore("hola")
+console.log(cadena1);
+console.log(cadena2);
+console.log(cadena3);
+*/
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
