@@ -58,7 +58,6 @@ function cacheFunction(cb) {
 }
 
 /*Practice
-
       function cacheFunction(cb) {
         let cache = {}
   
@@ -111,8 +110,7 @@ function getNombre() {
   return this.nombre;
 }
 
-/*
-  Ejercicio 3
+/*Ejercicio 3
   IMPORTANTE: no modificar el código de arriba (variables instructor y alumno, y función getNombre)
 
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que
@@ -122,8 +120,7 @@ function getNombre() {
 let getNombreInstructor = getNombre.bind(instructor);
 let getNombreAlumno = getNombre.bind(alumno);
 
-/*
-  Ejercicio 4
+/*Ejercicio 4
   Sin modificar la función crearCadena, usar bind para guardar, en las tres variables declaradas a continuación,
   tres funciones que retornen una cadena (string) y el delimitador especificado (asteriscos, guiones, y guiones
   bajos, respectivamente). Las funciones obtenidas deberían recibir solamente un argumento - la cadena de texto
