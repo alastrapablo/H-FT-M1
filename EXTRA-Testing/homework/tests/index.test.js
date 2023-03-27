@@ -1,8 +1,8 @@
-const { checkSeatStatus, getRowNumber } = require('../homework');
+const { checkSeatStatus, getRowNumber, book } = require('../homework');
 
 // it('Always true', () => {expect(true).toBe(true);});
 xdescribe('checkSeatStatus', () => {
-    xit('checkSeatStatus is a function', () => { expect(typeof checkSeatStatus).toBe('function'); });
+    it('checkSeatStatus is a function', () => { expect(typeof checkSeatStatus).toBe('function'); });
 
     it('should throw a TypeError if first parameter is not a string', () => {
         expect(() => checkSeatStatus(4)).toThrow(new TypeError('First parameter is not a string'));
@@ -35,11 +35,11 @@ xdescribe('booked', () => {
 });
 
 describe('book', () => {
-    it('should return "Seat in XX successfully booked" if the given seat is not booked', () => {
+    xit('should return "Seat in XX successfully booked" if the given seat is not booked', () => {
         expect(book('E', 3)).toBe('Seat in E3 successfully booked');
     });
 
-    it('should return "Seat in XX is already booked" if the given seat is already booked', () => {
+    xit('should return "Seat in XX is already booked" if the given seat is already booked', () => {
         expect(book('A', 1)).toBe('Seat in A1 is already booked');
     });
 

@@ -45,7 +45,7 @@ De esta forma:
 */
 
 function getRowNumber(letter) {
-    return letter.charCodeAt(0) - 65;
+    return letter.charCodeAt(0) - 65;  /* 'A' === 0 , 'B' === 1 */
 }
 
 //TEST 5
@@ -54,8 +54,8 @@ function getRowNumber(letter) {
 //     if (typeof number !== 'number') throw new TypeError('Second parameter is not a number');
 
 //     const numberRow = getRowNumber(row);
-//     const layoutRows = layout[numberRow];
-//     const seat = layoutRows[number];
+//     const layoutRow = layout[numberRow];
+//     const seat = layoutRow[number];
 //     return seat.booked;
 
 //     // let seat =  layout[numberRow][number].booked
@@ -81,17 +81,22 @@ function getSeat(letter, number) {
 }
 
 function checkSeatStatus(row, number) {
-    if (typeof row !== 'string') throw new TypeError('First parameter is not a string'); if (typeof number !== 'number') throw new TypeError('Second parameter is not a number');
+    if (typeof row !== 'string') throw new TypeError('First parameter is not a string');
+    if (typeof number !== 'number') throw new TypeError('Second parameter is not a number');
 
     const seat = getSeat(row, number);
     return seat.booked;
-
 }
 
-function book(row, number) { if (checkSeatStatus(row, number)) return `Seat in ${row}${number} is already booked`; const seat = getSeat(row, number); seat.booked = true; return `Seat in ${row}${number} successfully booked` }
-
+function book(row, number) {
+    if (checkSeatStatus(row, number)) return `Seat in ${row}${number} is already booked`;
+    const seat = getSeat(row, number);
+    seat.booked = true;
+    return `Seat in ${row}${number} successfully booked`
+}
 
 module.exports = {
     checkSeatStatus,
-    getRowNumber
+    getRowNumber,
+    book
 }
