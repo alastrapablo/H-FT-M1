@@ -20,7 +20,9 @@ function nFactorial(n) {
   return n * nFactorial(n - 1)
 }
 
-console.log(nFactorial(4));
+console.log(nFactorial(5));
+
+//
 
 function nFactorialIter(n) {
   let factorial = 1
@@ -73,29 +75,16 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-
   let items = [];
 
-  this.enqueue = function (element) {
-    return items.push(element);
-  };
+  this.enqueue = function (element) { return items.push(element) };
 
-  this.dequeue = function () {
-    if (items.length === 0) {   /*this.isEmpty*/
-      return undefined;
-    }
-    return items.shift();
-  };
+  this.dequeue = function () { return items.shift() };
 
-  this.size = function () {
-    return items.length;
-  };
-
-  // this.isEmpty = function () {
-  //   return items.length === 0;
-  // };
+  this.size = function () { return items.length };
 }
 
+//TODO
 // Crear una nueva instancia de la cola
 let queue = new Queue();
 
@@ -128,33 +117,27 @@ console.log(queue.size()); // Output: 0
 
 // Tratar de remover elementos de una cola vacía
 console.log(queue.dequeue()); // Output: undefined
+//TODO
 
 
-
-//! CON CLASS
-
+//! CON Constructor
 
 
-class Queue2 {
+class Queue {
   constructor() {
-    this._arr = [];
+    this.arr = [];
   }
 
-  enqueue(element) {
-    this._arr.push(element);
-  }
+  enqueue(element) { this.arr.push(element) }
 
-  dequeue() {
-    return this._arr.shift();
-  }
+  dequeue() { return this.arr.shift() }
 
-  size() {
-    return this._arr.length;
-  }
+  size() { return this.arr.length }
 }
 
+//TODO
 // Crear una nueva instancia de la cola
-let queue2 = new Queue2();
+let queue2 = new Queue();
 
 // Agregar elementos a la cola
 queue2.enqueue('first');
@@ -169,7 +152,7 @@ console.log(queue2.dequeue()); // secondItem === 'second'
 
 // Obtener el tamaño de la cola
 console.log(queue2.size()); // queueSize === 0
-
+//TODO
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
