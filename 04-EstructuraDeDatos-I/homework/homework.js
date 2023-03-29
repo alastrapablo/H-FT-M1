@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 /* Definir las funciones recursivas nFactorial y nFibonacci.
  
    Como ejercicio adicional y completamente opcional, al terminar
@@ -65,7 +63,7 @@ function nFibonacciIter(n) {
 
 console.log(nFibonacciIter(8));
 
-/*
+/* Queue
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
   - enqueue: agrega un valor respetando el orden.
   - dequeue: remueve un valor respetando el orden. Retorna undefined cuando la queue está vacía.
@@ -74,7 +72,104 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 Pueden utilizar class o función constructora.
 */
 
-function Queue() { }
+function Queue() {
+
+  let items = [];
+
+  this.enqueue = function (element) {
+    return items.push(element);
+  };
+
+  this.dequeue = function () {
+    if (items.length === 0) {   /*this.isEmpty*/
+      return undefined;
+    }
+    return items.shift();
+  };
+
+  this.size = function () {
+    return items.length;
+  };
+
+  // this.isEmpty = function () {
+  //   return items.length === 0;
+  // };
+}
+
+// Crear una nueva instancia de la cola
+let queue = new Queue();
+
+// Agregar elementos a la cola
+queue.enqueue('first');
+queue.enqueue('second');
+queue.enqueue('third');
+
+// Obtener el tamaño de la cola
+console.log(queue.size()); // Output: 3
+
+// Remover elementos de la cola
+console.log(queue.dequeue()); // Output: 'first'
+console.log(queue.dequeue()); // Output: 'second'
+
+// Obtener el tamaño de la cola después de remover elementos
+console.log(queue.size()); // Output: 1
+
+// Agregar más elementos a la cola
+queue.enqueue('fourth');
+queue.enqueue('fifth');
+
+// Remover todos los elementos de la cola
+console.log(queue.dequeue()); // Output: 'third'
+console.log(queue.dequeue()); // Output: 'fourth'
+console.log(queue.dequeue()); // Output: 'fifth'
+
+// Obtener el tamaño de la cola después de remover todos los elementos
+console.log(queue.size()); // Output: 0
+
+// Tratar de remover elementos de una cola vacía
+console.log(queue.dequeue()); // Output: undefined
+
+
+
+//! CON CLASS
+
+
+
+class Queue2 {
+  constructor() {
+    this._arr = [];
+  }
+
+  enqueue(element) {
+    this._arr.push(element);
+  }
+
+  dequeue() {
+    return this._arr.shift();
+  }
+
+  size() {
+    return this._arr.length;
+  }
+}
+
+// Crear una nueva instancia de la cola
+let queue2 = new Queue2();
+
+// Agregar elementos a la cola
+queue2.enqueue('first');
+queue2.enqueue('second');
+
+// Obtener el tamaño de la cola
+console.log(queue2.size());
+
+// Remover elementos de la cola
+console.log(queue2.dequeue()); // firstItem === 'first'
+console.log(queue2.dequeue()); // secondItem === 'second'
+
+// Obtener el tamaño de la cola
+console.log(queue2.size()); // queueSize === 0
+
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
