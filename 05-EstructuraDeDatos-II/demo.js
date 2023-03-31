@@ -1,119 +1,123 @@
-// function mascotas(nombre){
+// // *arreglos:
+// let arr = [1, 2, 'emanuel', true] //-> elementos.
 
-//     return function(tipo){
-//         return console.log('Tu mascota se llama ' + nombre + ' y su tipo es ' + tipo);
+// // arr[2] //'emanuel'
+
+// // *objetos:
+// let obj = { 
+//     a:1,
+//     b:'emanuel',
+//     c:true
+// } // propiedades.
+
+// // obj.a
+// // obj['a']
+
+// // * Lista enlazadas
+
+// //Lista -> nodo1 -> nodo2 -> nodo3
+
+// function Node(info){
+//     this.info = info;
+//     this.next = null;
+// }
+
+// function List(){
+//     this.head = null;
+//     this._length = 0;
+// }
+
+// // * Método agregar
+// List.prototype.add = function(info){
+//     let node = new Node(info);
+//     console.log(node);
+//     let current = this.head;
+
+//     //si nuestra lista está vacía
+//     if(current === null){
+//         this.head = node;
+//         this._length++;
+//         return node;
 //     }
-// }
 
-// const mascota = mascotas('Firulai')
-
-// console.log(mascota);
-// mascota('perro')
-
-// var crearFuncion = function(){
-//     var arreglo = [];
-//     for (let i = 0 ; i < 7 ; i++) {
-//         arreglo.push(function(){
-//             console.log(i);
-//         })
+//     //si ya hay un nodo o hay muchos, es decir no es null, así que debo recorrer
+//     //hasta el último (el último será el que en su siguiente sea null)
+//     while(current.next){
+//         current = current.next;
 //     }
-//     return arreglo;
+//     current.next = node;
+//     this._length++;
+//     return node;
 // }
 
-// var arr = crearFuncion();
-// arr[0]();//0 - 3 - undefined
-// arr[1]();//1 - 3
-// arr[2]();//2 - 3
-// arr[3]();//2 - 3
-// arr[4]();//2 - 3
-// arr[5]();//2 - 3
-// arr[6]();//2 - 3
+// let lista = new List();
+// lista.add('Victor')
+// lista.add('Keybian')
+// lista.add('Pablo')
+
+// console.log(lista);
 
 
-//contexto global
-// function contadorcontarCorazones(){
-//     let corazones = 0;
-//     return function(){
-//         corazones++
-//         return corazones
+// List.prototype.getAll = function(){
+//     let current = this.head //iniciamos por el head;
+
+//     //si la lista está vacía
+//     if(!current){
+//         console.log('La lista está vacía');
+//         return;
 //     }
-// }
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// contarCorazones = 17
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-// console.log(contadorcontarCorazones());
-
-// const contarCorazones = contadorcontarCorazones();
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// corazones = 21
-// console.log(corazones);
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-// console.log(contarCorazones());
-
-// const persona = {
-//     nombre: 'Joaquin',
-//     apellido:'Pineda',
-//     edad:22,
+//     //si no está vacía
+//     while(current){
+//         console.log(current.info);
+//         current = current.next;
+//     }
+//     return;
 // }
 
-// const persona2 = {
-//     nombre: 'Viviana',
-//     apellido:'Villegas',
-//     edad:24,
-// }
-
-// function datos(){
-//     return(
-//         "su nombre es " + this.nombre + ' ' + this.apellido + ' y tiene ' + this.edad + ' años.'
-//     )
-// }
-
-// console.log(datos());
+// lista.getAll()
 
 
 
+// let nodo1 = new Nodo('Renato')
+// let nodo2 = new Nodo('Agustín')
 
-// console.log(persona2.datos());
+// nodo1.next = nodo2
 
-// const nuevaPersona2 = datos.bind(persona2)
-// const nuevaPersona = datos.bind(persona)
-// console.log(nuevaPersona2());
-// console.log(nuevaPersona());
-// nuevaPersona()
+// console.log(nodo1);
 
-function multiplicar(a, b) {
-    return console.log(a * b);
+
+let longitud = 20;
+let contenedor = [];
+
+let persona1 = {
+    dni: 123456,
+    nombre: 'Pablo',
+    articulo: 'Lentes'
 }
 
-let multiplicarPorTres = multiplicar.bind(this, 3)
-
-multiplicarPorTres(5)
-
-const persona = {
-    nombre: 'Joaquin',
-    apellido: 'Pineda',
-    edad: 22,
+let persona2 = {
+    dni: 456159,
+    nombre: 'Danna',
+    articulo: 'mochila'
 }
 
-let logNombre = function (arg1, arg2) {
-    console.log(arg1 + ' ' + this.nombre + ' ' + this.apellido + ' ' + arg2);
+function hashGuardarCositas(dni, nombre) {
+    return (nombre.length + dni) % longitud;
 }
 
-// logNombre.call(persona, 'holiii', '¿Cómo estás?')
-logNombre.apply(persona, ['holiii', '¿Cómo estás?'])
+let indice = hashGuardarCositas(persona1.dni, persona1.nombre);
+
+contenedor[indice] = persona1.articulo;
+
+console.log(contenedor);
+
+let buscarArticulo = hashGuardarCositas(persona1.dni, persona1.nombre)
+
+console.log(buscarArticulo);
+
+console.log(contenedor[buscarArticulo]);
+
+
+
+
+
