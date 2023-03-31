@@ -22,7 +22,7 @@ function nFactorial(n) {
 
 console.log(nFactorial(5));
 
-//
+//ITERANDO
 
 function nFactorialIter(n) {
   let factorial = 1
@@ -54,6 +54,8 @@ function nFibonacci(n) {
 
 console.log(nFibonacci(8));
 
+//ITERANDO
+//For
 function nFibonacciIter(n) {
   let fibonacci = [0, 1]
 
@@ -64,6 +66,8 @@ function nFibonacciIter(n) {
 }
 
 console.log(nFibonacciIter(8));
+
+
 
 /* Queue
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -78,10 +82,13 @@ function Queue() {
   let items = [];
 
   this.enqueue = function (element) { return items.push(element) };
+  // Queue.prototype.enqueue = function (element) { this.items.push(element) }
 
   this.dequeue = function () { return items.shift() };
+  // Queue.prototype.dequeue = function (element) { this.items.shift() }
 
   this.size = function () { return items.length };
+  // Queue.prototype.enqueue = function (element) { this.items.length }
 }
 
 //TODO
@@ -123,36 +130,36 @@ console.log(queue.dequeue()); // Output: undefined
 //! CON Constructor
 
 
-class Queue {
-  constructor() {
-    this.arr = [];
-  }
+// class Queue {
+//   constructor() {
+//     this.arr = [];
+//   }
 
-  enqueue(element) { this.arr.push(element) }
+//   enqueue(element) { this.arr.push(element) }
 
-  dequeue() { return this.arr.shift() }
+//   dequeue() { return this.arr.shift() }
 
-  size() { return this.arr.length }
-}
+//   size() { return this.arr.length }
+// }
 
-//TODO
-// Crear una nueva instancia de la cola
-let queue2 = new Queue();
+// //TODO
+// // Crear una nueva instancia de la cola
+// let queue2 = new Queue();
 
-// Agregar elementos a la cola
-queue2.enqueue('first');
-queue2.enqueue('second');
+// // Agregar elementos a la cola
+// queue2.enqueue('first');
+// queue2.enqueue('second');
 
-// Obtener el tamaño de la cola
-console.log(queue2.size());
+// // Obtener el tamaño de la cola
+// console.log(queue2.size());
 
-// Remover elementos de la cola
-console.log(queue2.dequeue()); // firstItem === 'first'
-console.log(queue2.dequeue()); // secondItem === 'second'
+// // Remover elementos de la cola
+// console.log(queue2.dequeue()); // firstItem === 'first'
+// console.log(queue2.dequeue()); // secondItem === 'second'
 
-// Obtener el tamaño de la cola
-console.log(queue2.size()); // queueSize === 0
-//TODO
+// // Obtener el tamaño de la cola
+// console.log(queue2.size()); // queueSize === 0
+// //TODO
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
