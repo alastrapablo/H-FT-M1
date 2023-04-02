@@ -4,10 +4,10 @@
 // // arr[2] //'emanuel'
 
 // // *objetos:
-// let obj = { 
-//     a:1,
-//     b:'emanuel',
-//     c:true
+// let obj = {
+//     a: 1,
+//     b: 'emanuel',
+//     c: true
 // } // propiedades.
 
 // // obj.a
@@ -17,34 +17,34 @@
 
 // //Lista -> nodo1 -> nodo2 -> nodo3
 
-// function Node(info){
+// function Node(info) {
 //     this.info = info;
 //     this.next = null;
 // }
 
-// function List(){
+// function List() {
 //     this.head = null;
 //     this._length = 0;
 // }
 
 // // * Método agregar
-// List.prototype.add = function(info){
+// List.prototype.add = function (info) {
 //     let node = new Node(info);
 //     console.log(node);
 //     let current = this.head;
 
 //     //si nuestra lista está vacía
-//     if(current === null){
+//     if (current === null) {
 //         this.head = node;
 //         this._length++;
 //         return node;
 //     }
-
 //     //si ya hay un nodo o hay muchos, es decir no es null, así que debo recorrer
 //     //hasta el último (el último será el que en su siguiente sea null)
-//     while(current.next){
+//     while (current.next) {
 //         current = current.next;
 //     }
+
 //     current.next = node;
 //     this._length++;
 //     return node;
@@ -58,16 +58,16 @@
 // console.log(lista);
 
 
-// List.prototype.getAll = function(){
+// List.prototype.getAll = function () {
 //     let current = this.head //iniciamos por el head;
 
 //     //si la lista está vacía
-//     if(!current){
+//     if (!current) {
 //         console.log('La lista está vacía');
 //         return;
 //     }
 //     //si no está vacía
-//     while(current){
+//     while (current) {
 //         console.log(current.info);
 //         current = current.next;
 //     }
@@ -84,6 +84,16 @@
 // nodo1.next = nodo2
 
 // console.log(nodo1);
+
+
+
+
+
+
+
+
+
+
 
 
 let longitud = 20;
