@@ -13,7 +13,7 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
 */
 function LinkedList() {
   this.head = null;
-  this.length = 0;
+  this.length = 0; /*opcional, solo si pide metodo size*/
 }
 
 function Node(value) {
@@ -25,7 +25,7 @@ LinkedList.prototype.add = function (value) {
   let node = new Node(value);
   let current = this.head;
 
-  if (current === null) {
+  if (!current) {  /*(current === null)*/
     this.head = node;
     console.log(node);
     this.length++;
@@ -37,7 +37,7 @@ LinkedList.prototype.add = function (value) {
   }
 
   current.next = node;
-  console.log(node);
+  // console.log(node);
   this.length++;
   return node;
 }
@@ -45,59 +45,46 @@ LinkedList.prototype.add = function (value) {
 
 
 LinkedList.prototype.remove = function () {
-  let current = this.head;
+  //1. Lista Vacía
+  if (!this.head) { return null } /* (current === null) */
 
-  if (current === null) {
-    return null;
+  //2. Si hay un solo nodo
+  if (!this.head.next) {
+    let saveInfo = this.head.value
+    this.head = null
+    return saveInfo
   }
 
-  if (this.length === 1) {
-    this.head = null;
-    this.length--;
-    console.log(current.value);
-    return current.value;
-  }
+  //3. Si hay varios nodos
+  else {
+    let current = this.head;
 
-  while (current.next.next) {
-    current = current.next;
-  }
+    while (current.next.next) {
+      current = current.next;
+    }
 
-  let removedNode = current.next;
-  current.next = null;
-  this.length--;
-  console.log(removedNode.value);
-  return removedNode.value;
+    let saveInfo = current.next.value;
+    current.next = null;
+    console.log(saveInfo);
+    return saveInfo;
+  }
 }
 
-LinkedList.prototype.search = function (value) {
+LinkedList.prototype.search = function (info) {
   let current = this.head;
 
   while (current) {
-    //CASO CALLBACK
-    if (typeof value === 'function') {
-      if (value(current.value)) { return current.value }
+    //CASO VALUE
+    if (typeof info !== 'function') {
+      if (info === current.value) { return current.value }
     }
-
-    //CASO VALOR
-    else if (current.value === value) { return current.value }
+    //CASO CALLBACK
+    else if (info(current.value)) { return current.value }
 
     current = current.next;
   }
 
-  return null
-
-  ////Revisar
-  // while (current !== null && current.value !== value) {
-  //   current = current.next;
-  // }
-
-  // if (current === null) {
-  //   return null; // el valor no se encontró en la lista
-  // } else if (typeof value === 'function') {
-  //   return true;
-  // } else {
-  //   return current.value;
-  // }
+  return null;
 }
 
 
