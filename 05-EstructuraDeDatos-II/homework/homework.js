@@ -87,7 +87,6 @@ LinkedList.prototype.search = function (info) {
   return null;
 }
 
-
 let list = new LinkedList()
 list.add('Pol')
 list.add('Messi')
@@ -118,48 +117,40 @@ La clase debe tener los siguientes métodos:
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora';
  luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
-class HashTable {
-  constructor() {
-    this.numBuckets = 35;
-    this.buckets = new Array(this.numBuckets);
+function HashTable() {
+  this.numBuckets = 35;
+  this.container = []
+
+  for (let i = 0; i < this.numBuckets; i++) {
+    this.container.push({})
   }
 
-  hash(key) {
-    let hashValue = 0;
+  HashTable.prototype.hash = function (key) {
+    let sum = 0;
     for (let i = 0; i < key.length; i++) {
-      hashValue += key.charCodeAt(i);
+      sum += key.charCodeAt(i);
     }
     return sum % this.numBuckets;
   };
 
-  set(key, value) {
-    const index = this.hash(key)
+  HashTable.prototype.set = function (key, value) {
+    if (typeof key !== 'string') throw new TypeError('Keys must be strings')
 
-    if (!this.buckets[index]) {
-      this.buckets[index] = {}
-    }
-
-    this.buckets[index][key] = value
-
-    if (typeof key !== 'string') {
-      throw new TypeError('Keys must be strings')
-    }
+    let bucket = this.hash(key)
+    this.container[bucket][key] = value
   }
 
-  get(key) {
-    const index = this.hash(key);
-    if (!this.buckets[index]) {
-      return undefined;
-    }
-    return this.buckets[index][key]
+  HashTable.prototype.get = function (key) {
+    let index = this.hash(key);
+    return this.container[index][key];
   }
 
-
-  hasKey(key) {
-    return this.get(key) !== undefined;
+  HashTable.prototype.hasKey = function (key) {
+    let check_key = this.get(key)
+    if (check_key) return true;
+    return false
   }
 }
-
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
