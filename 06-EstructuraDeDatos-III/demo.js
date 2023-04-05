@@ -35,6 +35,7 @@ function BinarySearchTree(value) {
 
 BinarySearchTree.prototype.add = function (value) {
     if (value === this.value) return 'Ya existe, solo valores únicos'
+
     if (value < this.value) {
         if (!this.left) {
             let newTree = new BinarySearchTree(value)
@@ -44,6 +45,7 @@ BinarySearchTree.prototype.add = function (value) {
             this.left.add(value)
         }
     }
+
     else {
         if (!this.right) {
             let newTree = new BinarySearchTree(value)
@@ -57,12 +59,15 @@ BinarySearchTree.prototype.add = function (value) {
 
 BinarySearchTree.prototype.search = function (value) {
     if (value === this.value) return this.value;
+
     if (value < this.value && this.left !== null) {
         return this.left.search(value)
     }
+
     if (value > this.value && this.right !== null) {
         return this.right.search(value);
     }
+
     else {
         return 'Valor no encontrado'
     }
