@@ -1,14 +1,17 @@
 'use strict';
 
-/*
+/* EJERCICIO
  Implementar la clase BinarySearchTree, definiendo los siguientes métodos recursivos:
   - size: retorna la cantidad total de nodos del árbol
   - insert: agrega un nodo en el lugar correspondiente
   - contains: retorna true o false luego de evaluar si cierto valor existe dentro del árbol
-  - depthFirstForEach: recorre el árbol siguiendo el orden depth first (DFS) en cualquiera de sus variantes, según se indique por parámetro ("post-order", "pre-order", o "in-order"). Nota: si no se provee ningún parámetro, hará el recorrido "in-order" por defecto.
+  - depthFirstForEach: recorre el árbol siguiendo el orden depth first (DFS) en cualquiera 
+                      de sus variantes, según se indique por parámetro ("post-order", "pre-order", o "in-order").
+                      Nota: si no se provee ningún parámetro, hará el recorrido "in-order" por defecto.
   - breadthFirstForEach: recorre el árbol siguiendo el orden breadth first (BFS)
   El ábrol utilizado para hacer los tests se encuentra representado en la imagen bst.png dentro del directorio homework.
 */
+
 function BinarySearchTree(value) {
    this.value = value;
    this.left = null;
@@ -17,6 +20,8 @@ function BinarySearchTree(value) {
 
 
 //* SIZE 
+// Retorna la cantidad total de nodos del árbol
+
 //1
 BinarySearchTree.prototype.size = function () {
    let size = 1
@@ -41,17 +46,16 @@ BinarySearchTree.prototype.size = function () {
 }
 
 //* INSERT
-BinarySearchTree.prototype.insert = function (value) {
-   if (value === this.value) return 'Ya existe, solo valores únicos'
+// Agrega un nodo en el lugar correspondiente
 
+BinarySearchTree.prototype.insert = function (value) {
+   //if (value === this.value) return 'Ya existe, solo valores únicos'
    if (value < this.value) {
       if (!this.left) {
          let newTree = new BinarySearchTree(value)
          this.left = newTree;
       }
-      else {
-         this.left.insert(value)
-      }
+      else { this.left.insert(value) }
    }
 
    else {
@@ -59,28 +63,49 @@ BinarySearchTree.prototype.insert = function (value) {
          let newTree = new BinarySearchTree(value)
          this.right = newTree;
       }
-      else {
-         this.right.insert(value)
-      }
+      else { this.right.insert(value) }
    }
 }
 
 //* CONTAINS
+// Retorna true o false luego de evaluar si cierto valor existe dentro del árbol
+
+//1
 BinarySearchTree.prototype.contains = function (value) {
    if (value === this.value) return true;
 
-   if (value < this.value && this.left !== null) {
+   if (value < this.value && this.left) {   /*this.left !== null*/
       return this.left.contains(value)
    }
 
-   if (value > this.value && this.right !== null) {
+   if (value > this.value && this.right) {
       return this.right.contains(value);
    }
 
    else { return false }
 }
 
+//2
+BinarySearchTree.prototype.contains = function (value) {
+   if (value === this.value) return true;
+
+   if (value < this.value) {
+      if (!this.left) return false;
+      return this.left.contains(value);
+   }
+
+   if (value > this.value) {
+      if (!this.right) return false;
+      return this.right.contains(value);
+   }
+};
+
 //* Depth First For Each 
+/* Depth First For Each 
+      Recorre el árbol siguiendo el orden depth first (DFS) en cualquiera de sus variantes,
+       según se indique por parámetro ("post-order", "pre-order", o "in-order").
+      Nota: si no se provee ningún parámetro, hará el recorrido "in-order" por defecto. */
+
 BinarySearchTree.prototype.depthFirstForEach = function (order) {
    let arr = []
    if (order === 'in-order' || !order) {
@@ -105,6 +130,8 @@ BinarySearchTree.prototype.depthFirstForEach = function (order) {
 //    if (order === 'post-order') console.log(this.value);
 //  }
 
+//* Breadth First For Each
+// Recorre el árbol siguiendo el orden breadth first (BFS)
 
 BinarySearchTree.prototype.breadthFirstForEach = function () {
 
