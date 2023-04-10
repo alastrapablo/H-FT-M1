@@ -109,7 +109,7 @@ function mergeSort(array) {
   let mid = Math.floor(array.length / 2)
   let left = array.slice(0, mid)
   let right = array.slice(mid)
-  console.log(left, right);
+  // console.log(left, right);
 
   if (left.length > 1) { left = mergeSort(left) }
   if (right.length > 1) { right = mergeSort(right) }
